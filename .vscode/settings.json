@@ -1,0 +1,7 @@
+{
+  "eslint.format.enable": true,
+  "eslint.run": "onSave",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.enablePreview": false
+}
