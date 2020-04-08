@@ -1,7 +1,7 @@
-import loadable from "@loadable/component";
+import loadable from '@loadable/component';
 
 const AsyncComments = loadable(() =>
-  import(/* webpackChunkName: "news" */ "./Comments")
+  import(/* webpackChunkName: "news" */ './Comments')
 );
 
 export default AsyncComments;

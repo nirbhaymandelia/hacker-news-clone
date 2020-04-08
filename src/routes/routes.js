@@ -1,22 +1,22 @@
-import News from "../components/pages/News/News.async";
-import Comments from "../components/pages/Comments/Comments.async";
+import News from '../components/pages/News/News.async';
+import Comments from '../components/pages/Comments/Comments.async';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     component: News,
     exact: true,
   },
   {
-    path: "/newest",
+    path: '/newest',
     component: News,
     exact: true,
   },
   {
-    path: "/comments",
+    path: '/comments',
     component: Comments,
     exact: true,
-  }
+  },
 ];
 
 export default routes;

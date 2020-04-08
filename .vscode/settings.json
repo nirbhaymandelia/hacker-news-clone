@@ -1,7 +1,10 @@
 {
-  "eslint.format.enable": true,
-  "eslint.run": "onSave",
+  "eslint.enable": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.enablePreviewFromQuickOpen": false,
-  "workbench.editor.enablePreview": false
+  "workbench.editor.enablePreview": false,
+  "files.watcherExclude": {
+    "**/dist": true,
+    "**/node_modules": true,
+  },
 }

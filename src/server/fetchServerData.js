@@ -1,8 +1,8 @@
-import { matchRoutes } from "react-router-config";
-import Routes from "../routes/routes";
+import { matchRoutes } from 'react-router-config';
+import Routes from '../routes/routes';
 
 export default function fetchServerData(req, store) {
-  const params = req.params[0].split("/");
+  const params = req.params[0].split('/');
   const id = params[2];
   // Checks the given path, matches with component and returns array of items about to be rendered
   const routes = matchRoutes(Routes, req.path);

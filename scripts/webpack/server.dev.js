@@ -1,34 +1,33 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-const merge = require("webpack-merge");
-const path = require("path");
-const parts = require("./webpack.parts");
+const merge = require('webpack-merge');
+const path = require('path');
+const parts = require('./webpack.parts');
 
 const root = process.cwd();
-const srcDir = path.resolve(root, "src");
-const serverEntry = path.resolve(root, "src/server/index");
-const outputDir = path.resolve("dist/server");
+const srcDir = path.resolve(root, 'src');
+const serverEntry = path.resolve(root, 'src/server/index');
+const outputDir = path.resolve('dist/server');
 
-merge([
+module.exports = merge([
   {
-    name: "server",
-    mode: "development",
-    target: "node",
+    name: 'server',
+    mode: 'development',
+    target: 'node',
     context: root,
-    devtool: "cheap-module-eval-source-map",
+    devtool: 'cheap-module-eval-source-map',
     resolve: {
-      modules: [srcDir, "node_modules"],
-      extensions: [".js", ".jsx", ".css"],
+      modules: [srcDir, 'node_modules'],
+      extensions: ['.js', '.jsx', '.css'],
     },
     entry: serverEntry,
     output: {
       path: outputDir,
-      filename: "bundle.js",
-      publicPath: "/assets/",
-      libraryTarget: "commonjs2",
+      filename: '[name].js',
+      publicPath: '/assets/',
+      libraryTarget: 'commonjs2',
       // chunkFilename: '[name].js',
     },
     node: {
-      fs: "empty",
+      fs: 'empty',
     },
   },
   parts.loadScripts(),

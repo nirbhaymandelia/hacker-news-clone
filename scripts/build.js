@@ -1,5 +1,4 @@
 /* eslint-disable consistent-return */
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
 const chalk = require('chalk');
 const webpack = require('webpack');
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
@@ -7,14 +6,13 @@ const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 process.env.NODE_ENV = 'production';
 process.env.PUBLIC_URL = process.env.PUBLIC_URL || '';
 
-process.on("unhandledRejection", (err) => {
+process.on('unhandledRejection', (err) => {
   // console.log(err);
   throw err;
 });
 
-
-const clientProdConfig = require("./webpack/client.prod");
-const serverProdConfig = require("./webpack/server.prod");
+const clientProdConfig = require('./webpack/client.prod');
+const serverProdConfig = require('./webpack/server.prod');
 
 function printResult({ warnings }) {
   if (warnings.length) {
@@ -39,7 +37,7 @@ function build(clientConfig, serverConfig) {
       // console.log(stats);
       console.log(chalk.white('✓ Client webpack build complete'));
 
-      serverCompiler.run(serverErr => {
+      serverCompiler.run((serverErr) => {
         if (serverErr) {
           return reject(serverErr);
         }
@@ -58,13 +56,13 @@ function build(clientConfig, serverConfig) {
       });
     });
   }).then(
-    result => printResult(result),
-    err => {
+    (result) => printResult(result),
+    (err) => {
       console.log(chalk.red('Failed to compile.\n'));
       console.log(`${err.message || err}\n`);
       process.exit(1);
-    },
+    }
   );
-};
+}
 
 build(clientProdConfig, serverProdConfig);

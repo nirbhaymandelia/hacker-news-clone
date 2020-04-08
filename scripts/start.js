@@ -1,7 +1,4 @@
-/* eslint import/no-extraneous-dependencies: ["error", {"devDependencies": true}] */
-require('@babel/register');
 const chalk = require('chalk');
-const express = require('express');
 // const path = require('path');
 // const clearConsole = require('react-dev-utils/clearConsole');
 const openBrowser = require('react-dev-utils/openBrowser');
@@ -11,37 +8,39 @@ const {
 } = require('react-dev-utils/WebpackDevServerUtils');
 
 // const { purgeCacheOnChange } = require('./utils/purgeCacheOnChange');
-const applyDevMiddleware = require('./utils/devMiddleware');
-const clientConfig = require('./webpack/client.dev')
+const devCompiler = require('./utils/devCompiler');
+const clientConfig = require('./webpack/client.dev');
+const serverConfig = require('./webpack/server.dev');
 
 process.env.NODE_ENV = 'development';
 process.env.PUBLIC_URL = process.env.PUBLIC_URL || '';
 
-process.on("unhandledRejection", (err) => {
+process.on('unhandledRejection', (err) => {
   // console.log(err);
   throw err;
 });
 
-function start(fn, config) {
+function start(config) {
   const DEFAULT_PORT = process.env.PORT || 3000;
   const HOST = process.env.HOST || '0.0.0.0';
   const isInteractive = process.stdout.isTTY;
-  const server = express();
-
+  const options = {
+    publicPath: clientConfig.output.publicPath,
+  };
   // We need to "inject" the dev middleware higher up in the stack of middlewares,
   // so applyDevMiddleware needs to happen before server.use()
-  applyDevMiddleware(server, config).then(() => {
-    server.use(fn);
-
-    choosePort(HOST, DEFAULT_PORT).then(port => {
+  devCompiler(config, options).then((middlewares) => {
+    choosePort(HOST, DEFAULT_PORT).then((port) => {
       if (!port) {
         return;
       }
 
       const urls = prepareUrls('http', HOST, port);
-
+      // eslint-disable-next-line global-require, import/no-unresolved
+      const server = require('../dist/server/main').default;
+      server.use(middlewares);
       // eslint-disable-next-line consistent-return
-      server.listen(port, HOST, err => {
+      server.listen(port, HOST, (err) => {
         if (err) {
           return console.log(err);
         }
@@ -60,18 +59,11 @@ function start(fn, config) {
           chalk.blue(`
           Running locally at ${urls.localUrlForBrowser}
           Running on your network at ${urls.lanUrlForConfig}:${port}
-        `),
+        `)
         );
       });
     });
   });
-};
+}
 
-start((req, res) => {
-  // We use "require" inside this function
-  // so that when purgeCacheOnChange() runs we pull in the most recent code.
-  // https://codeburst.io/dont-use-nodemon-there-are-better-ways-fc016b50b45e
-  // eslint-disable-next-line global-require
-  const app = require("../src/server/index").default;
-  app(req, res);
-}, clientConfig);
+start([clientConfig, serverConfig]);

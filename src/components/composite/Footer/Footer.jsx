@@ -9,7 +9,7 @@ class Footer extends Component {
   render() {
     console.log('!!Footer render!!', this.props);
     return (
-      <div className="container footer border">
+      <div className="footer border">
         <h2>Footer</h2>
       </div>
     );

@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -6,16 +7,20 @@ import { loadableReady } from '@loadable/component';
 import store from '../store/index';
 import SingleLayout from '../components/layouts/Single';
 
+const App = hot(SingleLayout);
+
 const createClientApp = () => {
   console.log('!!createClientApp!!');
-  return routes => {
+  return (routes) => {
     loadableReady(() => {
       console.log('!!createApp loadableReady!!');
       hydrate(
         <Provider store={store}>
-          <BrowserRouter>{SingleLayout(routes)}</BrowserRouter>
+          <BrowserRouter>
+            <App routes={routes} />
+          </BrowserRouter>
         </Provider>,
-        document.getElementById('app'),
+        document.getElementById('app')
       );
     });
   };

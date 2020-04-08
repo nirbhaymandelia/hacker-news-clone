@@ -1,21 +1,21 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
 /* eslint-disable no-console */
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
-const root = path.resolve(process.cwd(), "../../../");
-const distClient = "dist/client";
-const distServer = "dist/server";
-const statsFile = "loadable-stats.json";
-const masterPackagePath = "packages/apps/master";
+const root = path.resolve(process.cwd(), '../../../');
+const distClient = 'dist/client';
+const distServer = 'dist/server';
+const statsFile = 'loadable-stats.json';
+const masterPackagePath = 'packages/apps/master';
 
 const loadJSON = (file) => {
   try {
-    const data = fs.readFileSync(file, "utf-8");
+    const data = fs.readFileSync(file, 'utf-8');
     return JSON.parse(data);
   } catch (e) {
-    console.log("Error loading file:", file);
+    console.log('Error loading file:', file);
   }
   return null;
 };
@@ -27,12 +27,12 @@ const copy = (src, dest) => {
 };
 
 function writeFileToJson(json, fileName) {
-  fs.writeFile(json, fileName, "utf8", (err) => {
+  fs.writeFile(json, fileName, 'utf8', (err) => {
     if (err) {
-      console.log("An error occured while writing JSON Object to File.");
+      console.log('An error occured while writing JSON Object to File.');
       return console.log(err);
     }
-    return console.log("JSON file has been saved.");
+    return console.log('JSON file has been saved.');
   });
 }
 
@@ -45,7 +45,7 @@ const getServerBuildPath = (pkgPath) => {
 };
 
 function copyToMaster(stats, outputPath) {
-  const exclude = ["main", "runtime"];
+  const exclude = ['main', 'runtime'];
   const { assetsByChunkName } = stats;
   const sourcePath = stats.outputPath;
   Object.keys(assetsByChunkName).forEach((key) => {
@@ -59,7 +59,7 @@ function copyToMaster(stats, outputPath) {
           return console.log(`created asset ${dist}`);
         });
       }
-      if (typeof asset === "string") {
+      if (typeof asset === 'string') {
         const src = `${sourcePath}/${asset}`;
         const dist = `${outputPath}/${asset}`;
         copy(src, dist);
@@ -70,7 +70,7 @@ function copyToMaster(stats, outputPath) {
 }
 
 const merge = (target, source) => {
-  const isObject = (obj) => obj && typeof obj === "object";
+  const isObject = (obj) => obj && typeof obj === 'object';
   // Iterate through `source` properties and if an `Object` set property to merge of `target` and `source` properties
   Object.keys(source).forEach((key) => {
     const targetValue = target[key];
@@ -79,7 +79,7 @@ const merge = (target, source) => {
     if (Array.isArray(targetValue) && Array.isArray(sourceValue)) {
       target[key] = targetValue.concat(sourceValue);
     } else if (isObject(targetValue) && isObject(sourceValue)) {
-      target[key] = merge(Object.assign({}, targetValue), sourceValue);
+      target[key] = merge({ ...targetValue }, sourceValue);
     } else {
       target[key] = sourceValue;
     }
@@ -118,7 +118,7 @@ function copyAssets() {
       /^packages\/apps\/[\S]{3,20}$/.test(pkgPath) &&
       pkgPath !== masterPackagePath
     ) {
-      const appName = pkgPath.split("/").pop();
+      const appName = pkgPath.split('/').pop();
       clientStats[appName] = loadJSON(
         `${getClientBuildPath(pkgPath)}/${statsFile}`
       );

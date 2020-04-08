@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import Navigation from '../Navigation/Navigation';
+import Navigation from '../Navigation/Navigation';
+import logoSrc from '../../../assets/y18.gif';
 
 class Header extends Component {
   constructor(props) {
@@ -10,9 +11,14 @@ class Header extends Component {
   render() {
     console.log('!!Header Render!!', this.props);
     return (
-      <div className="container header border">
-        <h2>Header</h2>
-        {/* <Navigation /> */}
+      <div className="header border">
+        <a href="https://news.ycombinator.com" aria-label="logo">
+          <img src={logoSrc} alt="logo" className="sitelogo" />
+        </a>
+        <b className="hnname">
+          <a href="news">Hacker News</a>
+        </b>
+        <Navigation />
       </div>
     );
   }
