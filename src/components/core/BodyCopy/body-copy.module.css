@@ -1,0 +1,12 @@
+@import '../../../styles/variables.css';
+
+.primary {
+  font-size: var(--font-medium);
+  color: var(--color-black);
+}
+
+.secondary {
+  font-size: var(--font-small);
+  color: var(--color-default);
+  line-height: 20px;
+}

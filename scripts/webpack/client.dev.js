@@ -32,7 +32,7 @@ module.exports = merge([
   },
   parts.enableHotReload(),
   parts.loadScripts(),
-  parts.loadStyles(),
+  parts.loadStyles({ hmr: true }),
   parts.loadAssets(),
   parts.cleanBuildFolder(),
   parts.bundleAnalyzer(),

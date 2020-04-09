@@ -7,7 +7,7 @@ import '../../styles/index.css';
 
 const SingleLayout = ({ routes }) => {
   return (
-    <div className="container">
+    <div className="container hn-main">
       <Header />
       {renderRoutes(routes)}
       <Footer />

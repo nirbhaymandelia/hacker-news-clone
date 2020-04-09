@@ -2,7 +2,7 @@ import React from 'react';
 
 function Pagination() {
   return (
-    <div>
+    <div className="pagination p1">
       <button type="button">more</button>
     </div>
   );

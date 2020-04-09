@@ -1,26 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Vote from '../Vote/Vote';
+import TimeAgo from './TimeAgo';
+import HideButton from './HideButton';
+import Rank from './Rank';
+import ItemTitle from './ItemTitle';
+import AuthorInfo from './AuthorInfo';
+import CommentMeta from './CommentMeta';
 
-function ListItem({ rank, id, voteLink, link, title, site, fromSite }) {
+function ListItem({
+  rank,
+  id,
+  votes,
+  voteLink,
+  link,
+  title,
+  author,
+  createdAt,
+  commentCount,
+}) {
   return (
-    <div className="athing" id={id}>
-      <div className="title">
-        <span className="rank">{rank}</span>
+    <div className="list-item flex" id={id}>
+      <div className="flex flex-wrap ">
+        <Rank value={rank} align="right" className="py1 pl1" />
+        <Vote
+          votes={votes}
+          voteLink={voteLink}
+          className="pt1 pl1 flex md-pb1"
+        />
       </div>
-      <Vote voteLink={voteLink} />
-      <div className="title">
-        <a href={link} className="storylink">
-          {' '}
-          {title}
-        </a>
-        <span className="sitebit comhead">
-          ({' '}
-          <a href={fromSite}>
-            <span className="sitestr">{site}</span>
-          </a>{' '}
-          )
-        </span>
+      <div className="flex flex-wrap">
+        <ItemTitle link={link} title={title} className="pl1 pt1 md-pb1" />
+        <AuthorInfo author={author} className="pl1 pb1 md-pt1" />
+        <TimeAgo createdAt={createdAt} className="pl1 pb1 md-pt1" />
+        <CommentMeta
+          commentCount={commentCount}
+          className="pl1 pb1 md-pt1 lg-hide"
+        />
+        <HideButton className="pl1 pb1 md-pt1" />
       </div>
     </div>
   );
@@ -28,21 +45,23 @@ function ListItem({ rank, id, voteLink, link, title, site, fromSite }) {
 ListItem.defaultProps = {
   id: 22808208,
   rank: 1,
+  votes: 0,
   voteLink: 'vote?id=22808208&amp;how=up&amp;goto=news',
   link: 'https://www.billiontoone.com/covid-19',
   title: 'We’re working on 1M Covid-19 testing capacity per day',
-  fromSite: 'from?site=billiontoone.com',
-  site: 'billiontoone.com',
+  commentCount: 0,
 };
 
 ListItem.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   rank: PropTypes.number,
+  votes: PropTypes.number,
+  commentCount: PropTypes.number,
   voteLink: PropTypes.string,
   link: PropTypes.string,
   title: PropTypes.string,
-  fromSite: PropTypes.string,
-  site: PropTypes.string,
+  author: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
 };
 
 export default ListItem;

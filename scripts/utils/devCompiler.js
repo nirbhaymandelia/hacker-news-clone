@@ -28,7 +28,7 @@ const devCompiler = (config, options) => {
     const clientCompiler = compiler.compilers.find((c) => c.name === 'client');
     const hotMiddleware = webpackHotMiddleware(clientCompiler, {
       path: '/__webpack_hmr',
-      heartbeat: 4000,
+      heartbeat: 3000,
     });
     // "invalid" event fires when you have changed a file, and Webpack is
     // recompiling a bundle. WebpackDevServer takes care to pause serving the

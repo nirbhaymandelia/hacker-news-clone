@@ -3,16 +3,17 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 // Style files regex
 const CSS_REGEX = /\.css$/;
-const CSS_MODULE_REGEX = /\.module\.css$/;
+// const CSS_MODULE_REGEX = /\.module\.css$/;
 const CSS_MODULE_IDENT =
   process.env.NODE_ENV === 'production'
     ? '[name]_[hash:base62:6]'
     : '[local]--[hash:base62:6]';
 
-exports.loadStyles = () => ({
+exports.loadStyles = ({ hmr } = false) => ({
   module: {
     rules: [
       {
@@ -20,44 +21,24 @@ exports.loadStyles = () => ({
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            // options: {
-            // only enable hot in development
-            // hmr: process.env.NODE_ENV === 'development',
-            // if hmr does not work, this is a forceful method.
-            // reloadAll: true,
-            // },
-          },
-          {
-            loader: 'css-loader',
             options: {
-              importLoaders: 1,
+              // only enable hot in development
+              hmr,
+              // if hmr does not work, this is a forceful method.
+              // reloadAll: true,
             },
           },
           {
-            loader: 'postcss-loader',
-          },
-        ],
-      },
-      {
-        test: CSS_MODULE_REGEX,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            // options: {
-            // only enable hot in development
-            // hmr: process.env.NODE_ENV === 'development',
-            // if hmr does not work, this is a forceful method.
-            // reloadAll: true,
-            // },
-          },
-          {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: {
+                // This enable css modules for all files for which /\.module\.\w+$/i.test(filename) return true
+                auto: true,
+                localIdentName: CSS_MODULE_IDENT,
+              },
               importLoaders: 1,
-              localIdentName: CSS_MODULE_IDENT,
+              esModule: true,
               sourceMap: true,
-              minimize: true,
             },
           },
           {
@@ -123,4 +104,8 @@ exports.loadableStats = () => ({
 
 exports.enableHotReload = () => ({
   plugins: [new HotModuleReplacementPlugin()],
+});
+
+exports.nodeExternals = (options) => ({
+  externals: nodeExternals(options),
 });

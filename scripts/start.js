@@ -1,4 +1,5 @@
 const chalk = require('chalk');
+const express = require('express');
 // const path = require('path');
 // const clearConsole = require('react-dev-utils/clearConsole');
 const openBrowser = require('react-dev-utils/openBrowser');
@@ -27,6 +28,8 @@ function start(config) {
   const options = {
     publicPath: clientConfig.output.publicPath,
   };
+  const server = express();
+
   // We need to "inject" the dev middleware higher up in the stack of middlewares,
   // so applyDevMiddleware needs to happen before server.use()
   devCompiler(config, options).then((middlewares) => {
@@ -37,8 +40,9 @@ function start(config) {
 
       const urls = prepareUrls('http', HOST, port);
       // eslint-disable-next-line global-require, import/no-unresolved
-      const server = require('../dist/server/main').default;
+      const app = require('../dist/server/main').default;
       server.use(middlewares);
+      server.use(app);
       // eslint-disable-next-line consistent-return
       server.listen(port, HOST, (err) => {
         if (err) {

@@ -30,6 +30,9 @@ module.exports = merge([
       fs: 'empty',
     },
   },
+  parts.nodeExternals({
+    whitelist: [/@babel\/runtime/],
+  }),
   parts.loadScripts(),
   parts.loadStyles(),
   parts.loadAssets(),

@@ -1,0 +1,12 @@
+@import '../../../styles/variables.css';
+
+.itemTitle {
+  /* comments */
+  width: 100%;
+}
+
+@media(--breakpoint-md){
+  .itemTitle {
+    width: auto;
+  }
+}

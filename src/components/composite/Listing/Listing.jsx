@@ -5,25 +5,20 @@ import ListItem from '../ListItem/ListItem';
 function Listing({ items }) {
   return (
     <div className="listing">
-      {items.map((item, index) => {
-        let fromSite = '';
-        let site = '';
-        const rank = index + 1;
-        if (item.url) {
-          const siteUrl = new URL(item.url);
-          site = siteUrl.host;
-          fromSite = siteUrl.host;
-        }
+      {items.map((item) => {
+        // const rank = index + 1;
         return (
           <ListItem
-            key={item.id}
-            id={item.id}
-            rank={rank}
+            key={item.objectID}
+            id={item.objectID}
+            rank={item.num_comments}
             voteLink={`vote?id=${item.id}`}
             link={item.url}
             title={item.title}
-            fromSite={fromSite}
-            site={site}
+            votes={item.points}
+            author={item.author}
+            createdAt={item.created_at}
+            commentCount={item.num_comments}
           />
         );
       })}

@@ -1,0 +1,13 @@
+
+@import '../../../styles/variables.css';
+
+.rank {
+  display: none;
+}
+
+@media (--breakpoint-lg) {
+  .rank {
+    width: 50px;
+    display: block;
+  }
+}

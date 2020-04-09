@@ -1,0 +1,25 @@
+:root {
+  --font-family: Verdana, Geneva, sans-serif;
+
+  --font-medium: 10pt;
+  --font-small: 8pt;
+  --font-large: 12pt;
+
+  --color-default: #828282;
+  --color-border: #ff6600;
+  --color-black: #000;
+  --color-white: #fff;
+
+  --bg-primary: #ff6600;
+  --bg-secondary: #f6f6ef;
+  --bg-tertiary: #e6e6df;
+
+  --space-1: .5rem;
+  --space-2: 1rem;
+  --space-3: 2rem;
+  --space-4: 4rem;
+}
+
+@custom-media --breakpoint-sm (min-width: 40em);
+@custom-media --breakpoint-md (min-width: 52em);
+@custom-media --breakpoint-lg (min-width: 64em);

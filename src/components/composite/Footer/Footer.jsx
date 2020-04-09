@@ -1,19 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import BodyCopy from '../../core/BodyCopy/BodyCopy';
 
-class Footer extends Component {
-  constructor(props) {
-    super(props);
-    console.log('!!Footer Constructor!!', props);
-  }
-
-  render() {
-    console.log('!!Footer render!!', this.props);
-    return (
-      <div className="footer border">
-        <h2>Footer</h2>
-      </div>
-    );
-  }
+function Footer({ text, developer }) {
+  return (
+    <div className="footer flex p2 justify-center">
+      <BodyCopy type="secondary">
+        {text} <i>developed by {developer}</i>
+      </BodyCopy>
+    </div>
+  );
 }
+
+Footer.propTypes = {
+  text: PropTypes.string,
+  developer: PropTypes.string,
+};
+
+Footer.defaultProps = {
+  text: 'Hacker News Clone',
+  developer: 'Nirbhay Mandelia',
+};
 
 export default Footer;

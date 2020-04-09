@@ -1,0 +1,31 @@
+@import '../../../styles/variables.css';
+
+.primary-small {
+  color: var(--color-black);
+  font-size: var(--font-small);
+}
+
+.primary {
+  color: var(--color-black);
+  font-size: var(--font-medium);
+}
+
+.primary-large {
+  color: var(--color-black);
+  font-size: var(--font-large);
+}
+
+.secondary-small {
+  color: var(--color-default);
+  font-size: var(--font-small);
+}
+
+.secondary {
+  color: var(--color-default);
+  font-size: var(--font-medium);
+}
+
+.secondary-large {
+  color: var(--color-default);
+  font-size: var(--font-large);
+}

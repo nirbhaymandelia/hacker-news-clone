@@ -1,12 +1,16 @@
 import React from 'react';
+import Link from '../../core/Link/Link';
 
 function Navigation() {
   return (
-    <nav className="pagetop">
-      <a href="newest">new</a> |<a href="front">past</a> |
-      <a href="newcomments">comments</a> |<a href="ask">ask</a> |
-      <a href="show">show</a> |<a href="jobs">jobs</a> |
-      <a href="submit">submit</a>
+    <nav className="pagetop flex flex-wrap">
+      <Link variation="primary" className="p1" href="newest">
+        new
+      </Link>
+      <span className="sep py1">|</span>
+      <Link variation="primary" className="p1" href="front">
+        past
+      </Link>
     </nav>
   );
 }

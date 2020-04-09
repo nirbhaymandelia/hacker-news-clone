@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 // To be able to serve static files
 app.use('/assets', express.static('dist/client'));
 
-app.use(morgan('tiny'));
+app.use(morgan('short'));
 
 app.use(
   responseTime((_req, res, time) => {

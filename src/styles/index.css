@@ -6,9 +6,9 @@
 */
 
 @import 'basscss';
-@import './variables.css';
-/* LAYOUT */
-/* @import './grid.css'; */
+
 
 /* UTILITIES */
 @import './utilities.css';
+
+@import './base.css';

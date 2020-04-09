@@ -1,5 +1,5 @@
 import createClientApp from './createClient';
 import routes from '../routes/routes';
+import '../assets/favicon.ico';
 
-console.log('!!Master App Created!!');
 createClientApp()(routes);

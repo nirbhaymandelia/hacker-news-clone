@@ -1,20 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './vote.module.css';
 
-function Vote({ voteLink }) {
+function Vote({ voteLink, votes, className }) {
   return (
-    <div valign="top" className="votelinks">
-      <center>
-        <a id="up_22808208" href={voteLink}>
-          <div className="votearrow" title="upvote" />
+    <div className={`${styles.vote} ${className}`}>
+      <div className="votecount">{votes}</div>
+      <div className="votelinks">
+        <a href={voteLink}>
+          <div className={styles.votearrow} title="upvote" />
         </a>
-      </center>
+      </div>
     </div>
   );
 }
 
 Vote.propTypes = {
+  votes: PropTypes.number.isRequired,
   voteLink: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
+
+Vote.defaultProps = {
+  className: '',
 };
 
 export default Vote;
