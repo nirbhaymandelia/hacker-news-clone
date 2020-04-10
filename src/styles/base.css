@@ -23,39 +23,6 @@ a:visited {
   margin-left: auto;
 }
 
-
-
-
-
-
 .hn-main {
   background-color: var(--bg-secondary);
 }
-
-.header {
-  background-color: var(--bg-primary);
-}
-
-.footer {
-  border-top: 2px solid var(--color-border);
-}
-
-
-
-div.list-item:nth-child(even) {
-  background-color: var(--bg-tertiary);
-}
-
-.btn-link {
-  text-decoration: none;
-  display: inline-block;
-  color: var(--color-black);
-  text-align: center;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
-  background-color: transparent;
-  border: 1px solid transparent;
-  line-height: 1.5;
-  padding: 0 3px;
- }

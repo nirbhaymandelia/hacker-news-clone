@@ -3,10 +3,11 @@ import React from 'react';
 import Navigation from '../Navigation/Navigation';
 import logoSrc from '../../../assets/y18.gif';
 import Link from '../../core/Link/Link';
+import styles from './header.module.css';
 
 function Header() {
   return (
-    <div className="header flex flex-wrap">
+    <div className={`flex flex-wrap ${styles.header}`}>
       <Link
         variation="primary"
         className="p1"
@@ -15,11 +16,11 @@ function Header() {
       >
         <img src={logoSrc} alt="logo" className="color-white border" />
       </Link>
-      <b className="hnname py1 pr1">
+      {/* <b className="hnname py1 pr1">
         <Link className="logo-text" variation="primary" href="news">
           Hacker News
         </Link>
-      </b>
+      </b> */}
       <Navigation />
     </div>
   );

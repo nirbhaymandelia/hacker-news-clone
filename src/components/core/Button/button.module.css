@@ -1,0 +1,28 @@
+@import '../../../styles/variables.css';
+
+.btn {
+  background-color: transparent;
+  border: 1px solid transparent;
+  color: var(--color-black);
+  cursor: pointer;
+  display: inline-block;
+  font-size: var(--font-medium);
+  font-weight: 500;
+  line-height: var(--line-height-4);
+  text-decoration: none;
+  text-align: center;
+  user-select: none;
+  vertical-align: middle;
+}
+
+.primary {
+  color: var(--color-primary);
+  font-size: var(--font-large);
+  padding: 2px 8px;
+}
+
+.secondary {
+  color: var(--color-black);
+  font-size: var(--font-small);
+  padding: 0 3px;
+}

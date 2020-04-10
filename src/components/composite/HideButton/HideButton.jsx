@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from '../../core/Button/Button';
 
 function HideButton({ className }) {
   return (
     <div className={`sub-text ${className}`}>
       [
-      <button className="btn-link" type="button">
+      <Button variation="secondary" type="button">
         hide
-      </button>
+      </Button>
       ]
     </div>
   );

@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Vote from '../Vote/Vote';
-import TimeAgo from './TimeAgo';
-import HideButton from './HideButton';
-import Rank from './Rank';
-import ItemTitle from './ItemTitle';
-import AuthorInfo from './AuthorInfo';
-import CommentMeta from './CommentMeta';
+import TimeAgo from '../TimeAgo/TimeAgo';
+import HideButton from '../HideButton/HideButton';
+import Rank from '../Rank/Rank';
+import ItemTitle from '../ItemTitle/ItemTitle';
+import AuthorInfo from '../AuthorInfo/AuthorInfo';
+import CommentMeta from '../CommentMeta/CommentMeta';
+import styles from './listItem.module.css';
 
 function ListItem({
   rank,
@@ -18,9 +19,10 @@ function ListItem({
   author,
   createdAt,
   commentCount,
+  className,
 }) {
   return (
-    <div className="list-item flex" id={id}>
+    <div className={`flex ${styles.listItem} ${className}`} id={id}>
       <div className="flex flex-wrap ">
         <Rank value={rank} align="right" className="py1 pl1" />
         <Vote
@@ -50,6 +52,7 @@ ListItem.defaultProps = {
   link: 'https://www.billiontoone.com/covid-19',
   title: 'We’re working on 1M Covid-19 testing capacity per day',
   commentCount: 0,
+  className: '',
 };
 
 ListItem.propTypes = {
@@ -62,6 +65,7 @@ ListItem.propTypes = {
   title: PropTypes.string,
   author: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default ListItem;

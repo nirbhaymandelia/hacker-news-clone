@@ -1,0 +1,17 @@
+@import '../../../styles/variables.css';
+
+.nav a:visited {
+  color: var(--color-black);
+}
+
+a.selected {
+  color: var(--color-white);
+}
+
+a.selected:visited {
+  color: var(--color-white);
+}
+
+.sep {
+  color: var(--color-black);
+}

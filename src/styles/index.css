@@ -1,14 +1,6 @@
 /* NORMALIZE */
 @import 'sanitize.css';
-/*
-@import '~sanitize.css/forms.css';
-@import '~sanitize.css/typography.css';
-*/
-
-@import 'basscss';
-
-
-/* UTILITIES */
+@import './flexbox.css';
+@import './padding.css';
 @import './utilities.css';
-
 @import './base.css';

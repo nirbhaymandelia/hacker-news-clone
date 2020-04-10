@@ -8,5 +8,4 @@
 .secondary {
   font-size: var(--font-small);
   color: var(--color-default);
-  line-height: 20px;
 }

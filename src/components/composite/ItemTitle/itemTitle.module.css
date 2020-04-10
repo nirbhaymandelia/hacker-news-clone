@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-@media(--breakpoint-md){
+@media (--breakpoint-md) {
   .itemTitle {
     width: auto;
   }

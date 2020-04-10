@@ -1,0 +1,5 @@
+@import '../../../styles/variables.css';
+
+.listItem:nth-child(even) {
+  background-color: var(--bg-tertiary);
+}

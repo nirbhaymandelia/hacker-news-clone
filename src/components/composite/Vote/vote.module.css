@@ -7,8 +7,8 @@
 .votearrow {
   width: 10px;
   height: 10px;
-  border: 0px;
-  margin: 0px 5px 2px;
+  border: 0;
+  margin: 0 5px 2px;
   background-image: url(../../../assets/grayarrow2x.gif);
   background-size: 10px;
 }
