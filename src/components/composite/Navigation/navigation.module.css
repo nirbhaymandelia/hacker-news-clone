@@ -1,14 +1,19 @@
 @import '../../../styles/variables.css';
 
+.nav a {
+  color: var(--color-black);
+  font-size: var(--font-medium);
+}
+
 .nav a:visited {
   color: var(--color-black);
 }
 
-a.selected {
+a.active {
   color: var(--color-white);
 }
 
-a.selected:visited {
+a.active:visited {
   color: var(--color-white);
 }
 

@@ -20,6 +20,7 @@
     "morgan": "^1.10.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-content-loader": "^5.0.4",
     "react-dom": "^16.13.1",
     "react-helmet": "^5.2.1",
     "react-hot-loader": "^4.12.20",
@@ -79,6 +80,8 @@
     "not op_mini all"
   ],
   "stylelint": {
-    "extends": ["stylelint-config-standard"]
+    "extends": [
+      "stylelint-config-standard"
+    ]
   }
 }

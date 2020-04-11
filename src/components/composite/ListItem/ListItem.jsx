@@ -7,7 +7,6 @@ import Rank from '../Rank/Rank';
 import ItemTitle from '../ItemTitle/ItemTitle';
 import AuthorInfo from '../AuthorInfo/AuthorInfo';
 import CommentMeta from '../CommentMeta/CommentMeta';
-import styles from './listItem.module.css';
 
 function ListItem({
   rank,
@@ -22,7 +21,7 @@ function ListItem({
   className,
 }) {
   return (
-    <div className={`flex ${styles.listItem} ${className}`} id={id}>
+    <div className={`flex ${className}`} id={id}>
       <div className="flex flex-wrap ">
         <Rank value={rank} align="right" className="py1 pl1" />
         <Vote

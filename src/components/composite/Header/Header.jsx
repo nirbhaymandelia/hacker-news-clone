@@ -9,9 +9,10 @@ function Header() {
   return (
     <div className={`flex flex-wrap ${styles.header}`}>
       <Link
+        type="soft"
         variation="primary"
         className="p1"
-        href="https://news.ycombinator.com"
+        href="/"
         aria-label="logo"
       >
         <img src={logoSrc} alt="logo" className="color-white border" />

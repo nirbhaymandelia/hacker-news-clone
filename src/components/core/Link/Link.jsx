@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link as SoftLink } from 'react-router-dom';
 import styles from './link.module.css';
 
 function getStyle(style) {
@@ -9,9 +10,9 @@ function getStyle(style) {
 function Link({ href, type, variation, children, className }) {
   if (type === 'soft') {
     return (
-      <a href={href} className={`${getStyle(variation)} ${className} soft`}>
+      <SoftLink to={href} className={`${getStyle(variation)} ${className}`}>
         {children}
-      </a>
+      </SoftLink>
     );
   }
   return (

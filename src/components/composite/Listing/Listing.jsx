@@ -1,8 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ListItem from '../ListItem/ListItem';
+import ListItemLoader from '../ListItem/ListItemLoader';
+import styles from './listing.module.css';
 
-function Listing({ items }) {
+const getListingLoader = () => {
+  return (
+    <div className="listing">
+      {[...Array(30).keys()].map((itemId) => {
+        return <ListItemLoader key={itemId} className={styles.listItem} />;
+      })}
+    </div>
+  );
+};
+function Listing({ items, loader }) {
+  if (loader) {
+    return getListingLoader();
+  }
   return (
     <div className="listing">
       {items.map((item) => {
@@ -19,13 +33,21 @@ function Listing({ items }) {
             author={item.author}
             createdAt={item.created_at}
             commentCount={item.num_comments}
+            className={styles.listItem}
           />
         );
       })}
     </div>
   );
 }
+
 Listing.propTypes = {
   items: PropTypes.array.isRequired,
+  loader: PropTypes.bool,
 };
+
+Listing.defaultProps = {
+  loader: false,
+};
+
 export default Listing;

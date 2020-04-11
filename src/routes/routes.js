@@ -1,20 +1,20 @@
-import News from '../components/pages/News/News.async';
-import Comments from '../components/pages/Comments/Comments.async';
+import TopStories from '../pages/Front/TopStories.async';
+import LatestStories from '../pages/Latest/LatestStories.async';
 
 const routes = [
   {
     path: '/',
-    component: News,
+    component: TopStories,
     exact: true,
   },
   {
-    path: '/newest',
-    component: News,
+    path: '/top/:page?',
+    component: TopStories,
     exact: true,
   },
   {
-    path: '/comments',
-    component: Comments,
+    path: '/newest/:page?',
+    component: LatestStories,
     exact: true,
   },
 ];

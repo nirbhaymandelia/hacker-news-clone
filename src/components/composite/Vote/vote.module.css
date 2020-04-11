@@ -1,7 +1,21 @@
+@import '../../../styles/variables.css';
+
 .vote {
   width: 70px;
   justify-content: center;
   align-items: center;
+}
+
+.high {
+  color: var(--color-primary);
+}
+
+.modrate {
+  color: var(--color-secondary);
+}
+
+.low {
+  color: var(--color-black);
 }
 
 .votearrow {
@@ -11,4 +25,10 @@
   margin: 0 5px 2px;
   background-image: url(../../../assets/grayarrow2x.gif);
   background-size: 10px;
+}
+
+@media (--breakpoint-md) {
+  .vote {
+    justify-content: flex-end;
+  }
 }

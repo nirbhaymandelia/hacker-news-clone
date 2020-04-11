@@ -1,21 +1,29 @@
 import React from 'react';
-import Link from '../../core/Link/Link';
+import { NavLink } from 'react-router-dom';
 import styles from './navigation.module.css';
+
+function isActive(match, location) {
+  if (location.pathname === '/' || location.pathname === '/top') {
+    return true;
+  }
+  return false;
+}
 
 function Navigation() {
   return (
     <nav className={`flex flex-wrap ${styles.nav}`}>
-      <Link
-        variation="primary"
-        className={`${styles.selected} p1`}
-        href="newest"
+      <NavLink
+        className="p1"
+        activeClassName={styles.active}
+        to="/top"
+        isActive={isActive}
       >
-        new
-      </Link>
+        top
+      </NavLink>
       <span className={`py1 ${styles.sep}`}>|</span>
-      <Link variation="primary" className="p1" href="front">
-        past
-      </Link>
+      <NavLink className="p1" activeClassName={styles.active} to="/newest">
+        new
+      </NavLink>
     </nav>
   );
 }

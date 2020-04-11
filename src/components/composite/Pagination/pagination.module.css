@@ -1,0 +1,10 @@
+@import '../../../styles/variables.css';
+
+.moreBtn {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.moreBtn:visited {
+  color: var(--color-primary);
+}

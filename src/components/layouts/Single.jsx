@@ -16,7 +16,6 @@ const SingleLayout = ({ routes }) => {
 };
 
 SingleLayout.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   routes: PropTypes.array.isRequired,
 };
 export default SingleLayout;
