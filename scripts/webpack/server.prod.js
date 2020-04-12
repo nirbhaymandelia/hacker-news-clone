@@ -7,13 +7,13 @@ const srcDir = path.resolve(root, 'src');
 const serverEntry = path.resolve(root, 'src/server/index');
 const outputDir = path.resolve('dist/server');
 
-merge([
+module.exports = merge([
   {
     name: 'server',
     mode: 'production',
     target: 'node',
     context: root,
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map',
     resolve: {
       modules: [srcDir, 'node_modules'],
       extensions: ['.js', '.jsx', '.css'],
@@ -21,7 +21,7 @@ merge([
     entry: serverEntry,
     output: {
       path: outputDir,
-      filename: 'bundle.js',
+      filename: '[name].js',
       publicPath: '/assets/',
       libraryTarget: 'commonjs2',
       // chunkFilename: '[name].js',
@@ -30,6 +30,9 @@ merge([
       fs: 'empty',
     },
   },
+  parts.nodeExternals({
+    whitelist: [/@babel\/runtime/],
+  }),
   parts.loadScripts(),
   parts.loadStyles(),
   parts.loadAssets(),

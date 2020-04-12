@@ -15,6 +15,7 @@ function Pagination({ current, total, target }) {
         variation="primary-large"
         href={`${target}/${nextPage}`}
         className={styles.moreBtn}
+        title={`Page ${current + 1} of ${total}`}
       >
         More
       </Link>

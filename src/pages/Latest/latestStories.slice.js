@@ -39,7 +39,9 @@ export const {
   getLatestStoryFailure,
 } = latestStories.actions;
 
-export const fetchLatestStories = (params) => async (dispatch) => {
+export const fetchLatestStories = (match) => async (dispatch) => {
+  const { params } = match;
+  params.page = params.page || 0;
   try {
     dispatch(getLatestStoryStart());
     const { hits, nbPages, page } = await getLatestStories(params);

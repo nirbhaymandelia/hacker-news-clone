@@ -13,4 +13,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = { fetchLatestStories };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LatestStories);
+const LatestStoriesConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(LatestStories);
+
+export default LatestStoriesConnect;

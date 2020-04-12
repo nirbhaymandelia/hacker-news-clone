@@ -40,7 +40,9 @@ export const {
   getTopStoryFailure,
 } = topStories.actions;
 
-export const fetchTopStories = (params) => async (dispatch) => {
+export const fetchTopStories = (match) => async (dispatch) => {
+  const { params } = match;
+  params.page = params.page || 0;
   try {
     dispatch(getTopStoryStart());
     const data = await getTopStories(params);

@@ -24,7 +24,7 @@ function printResult({ warnings }) {
 }
 
 function build(clientConfig, serverConfig) {
-  console.log(chalk.blue('\n\tCreating an optimized production build...\n'));
+  console.log(chalk.blue('\nCreating an optimized production build...\n'));
 
   const clientCompiler = webpack(clientConfig);
   const serverCompiler = webpack(serverConfig);

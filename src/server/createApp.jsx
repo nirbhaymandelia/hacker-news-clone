@@ -4,16 +4,21 @@ import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ChunkExtractor } from '@loadable/server';
 import { Helmet } from 'react-helmet';
-import store from '../store/index';
+import configureStore from '../store/configureStore';
 import htmlTemplate from './htmlTemplate';
 import SingleLayout from '../components/layouts/Single';
+import fetchServerData from './fetchServerData';
 
 const createServerApp = (context, url, statsFile) => {
-  return (routes) => {
+  return async (routes) => {
+    // create new store for request
+    const store = configureStore();
     // We create an extractor from the statsFile
     const extractor = new ChunkExtractor({ statsFile });
+    await fetchServerData(url, routes, store.dispatch);
     // Wrap your application using "collectChunks"
     const app = extractor.collectChunks(<SingleLayout routes={routes} />);
+    // fetch server data
     // Render your application
     const html = renderToString(
       <Provider store={store}>
@@ -24,9 +29,7 @@ const createServerApp = (context, url, statsFile) => {
     );
     const initialData = JSON.stringify(store.getState());
     // You can now collect your script tags
-    const scriptTags = extractor.getScriptTags({
-      type: 'application/javascript',
-    }); // or extractor.getScriptElements();
+    const scriptTags = extractor.getScriptTags(); // or extractor.getScriptElements();
     // You can also collect your "preload/prefetch" links
     const linkTags = extractor.getLinkTags(); // or extractor.getLinkElements();
     // And you can even collect your style tags (if you use "mini-css-extract-plugin")

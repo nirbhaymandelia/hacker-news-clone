@@ -3,29 +3,31 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Listing from '../../components/composite/Listing/Listing';
 import Pagination from '../../components/composite/Pagination/Pagination';
+import Page from '../../components/core/Page/Page';
 
 class LatestStories extends Component {
   componentDidMount() {
-    const { params } = this.props.match;
-    params.page = params.page || 0;
-    this.props.fetchLatestStories(params);
+    const { match, items } = this.props;
+    if (!items.length) {
+      this.props.fetchLatestStories(match);
+    }
   }
 
   componentDidUpdate(prev) {
     const { params } = this.props.match;
     const { params: prevParams } = prev.match;
     if (prevParams.page !== params.page) {
-      this.props.fetchLatestStories(params);
+      this.props.fetchLatestStories(this.props.match);
     }
   }
 
   render() {
     const { items, loader, current, total } = this.props;
     return (
-      <div>
+      <Page title="Latest Stories">
         <Listing items={items} loader={loader} />
         <Pagination current={current} total={total} target="/newest" />
-      </div>
+      </Page>
     );
   }
 }

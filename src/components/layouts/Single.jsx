@@ -8,6 +8,9 @@ import '../../styles/index.css';
 const SingleLayout = ({ routes }) => {
   return (
     <div className="container hn-main">
+      <a className="skip-link" href="#main">
+        Skip to main
+      </a>
       <Header />
       {renderRoutes(routes)}
       <Footer />

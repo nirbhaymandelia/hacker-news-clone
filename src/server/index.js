@@ -24,6 +24,11 @@ app.use(
   })
 );
 
+app.use('/robots.txt', (req, res) => {
+  res.set('Content-Type', 'text/plain');
+  res.send('User-agent: *\nDisallow:');
+});
+
 app.use(requestHandler);
 
 export default app;

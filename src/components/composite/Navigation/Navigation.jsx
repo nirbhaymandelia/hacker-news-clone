@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './navigation.module.css';
 
 function isActive(match, location) {
-  if (location.pathname === '/' || location.pathname === '/top') {
+  if (location.pathname === '/' || match) {
     return true;
   }
   return false;

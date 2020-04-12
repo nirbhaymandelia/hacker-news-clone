@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 
 // eslint-disable-next-line import/no-unresolved
-const { app } = require('../dist/server/bundle.js');
+const app = require('../dist/server/main.js').default;
 
 const PORT = process.env.PORT || 3000;
 
