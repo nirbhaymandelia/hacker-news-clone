@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
     loader: state.latestStories.loading,
     current: state.latestStories.currentPage,
     total: state.latestStories.totalPages,
+    error: state.latestStories.error,
   };
 };
 

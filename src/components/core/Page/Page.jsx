@@ -13,6 +13,7 @@ function Page({ children, className, title, metaContent }) {
     </main>
   );
 }
+
 Page.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node.isRequired,

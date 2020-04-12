@@ -40,16 +40,19 @@ export const {
   getTopStoryFailure,
 } = topStories.actions;
 
-export const fetchTopStories = (match) => async (dispatch) => {
+export const fetchTopStories = (
+  match,
+  withCaching = (fn, params) => fn(params)
+) => async (dispatch) => {
   const { params } = match;
   params.page = params.page || 0;
   try {
     dispatch(getTopStoryStart());
-    const data = await getTopStories(params);
+    const data = await withCaching(getTopStories, params);
     const { hits, nbPages, page } = data;
     dispatch(getTopStorySuccess({ hits, nbPages, page }));
   } catch (err) {
-    dispatch(getTopStoryFailure(err));
+    dispatch(getTopStoryFailure(err.message));
   }
 };
 

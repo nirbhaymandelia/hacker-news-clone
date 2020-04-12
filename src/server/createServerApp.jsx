@@ -9,13 +9,15 @@ import htmlTemplate from './htmlTemplate';
 import SingleLayout from '../components/layouts/Single';
 import fetchServerData from './fetchServerData';
 
-const createServerApp = (context, url, statsFile) => {
+const createServerApp = (req, res, context) => {
   return async (routes) => {
+    const { statsFile } = req.app.locals;
+    const { url } = req;
     // create new store for request
     const store = configureStore();
     // We create an extractor from the statsFile
     const extractor = new ChunkExtractor({ statsFile });
-    await fetchServerData(url, routes, store.dispatch);
+    await fetchServerData(req, routes, store.dispatch);
     // Wrap your application using "collectChunks"
     const app = extractor.collectChunks(<SingleLayout routes={routes} />);
     // fetch server data

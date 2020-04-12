@@ -1,5 +1,5 @@
+/* eslint-disable no-console */
 const chalk = require('chalk');
-const express = require('express');
 // const path = require('path');
 // const clearConsole = require('react-dev-utils/clearConsole');
 const openBrowser = require('react-dev-utils/openBrowser');
@@ -28,7 +28,7 @@ function start(config) {
   const options = {
     publicPath: clientConfig.output.publicPath,
   };
-  const server = express();
+  // const server = express();
 
   // We need to "inject" the dev middleware higher up in the stack of middlewares,
   // so applyDevMiddleware needs to happen before server.use()
@@ -41,10 +41,11 @@ function start(config) {
       const urls = prepareUrls('http', HOST, port);
       // eslint-disable-next-line global-require, import/no-unresolved
       const app = require('../dist/server/main').default;
-      server.use(middlewares);
-      server.use(app);
+      app.use(middlewares);
+      app.setup();
+      // app.use(app);
       // eslint-disable-next-line consistent-return
-      server.listen(port, HOST, (err) => {
+      app.listen(port, HOST, (err) => {
         if (err) {
           return console.log(err);
         }

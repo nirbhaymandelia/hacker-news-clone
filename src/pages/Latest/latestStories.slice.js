@@ -39,15 +39,18 @@ export const {
   getLatestStoryFailure,
 } = latestStories.actions;
 
-export const fetchLatestStories = (match) => async (dispatch) => {
+export const fetchLatestStories = (
+  match,
+  withCaching = (fn, params) => fn(params)
+) => async (dispatch) => {
   const { params } = match;
   params.page = params.page || 0;
   try {
     dispatch(getLatestStoryStart());
-    const { hits, nbPages, page } = await getLatestStories(params);
+    const { hits, nbPages, page } = await withCaching(getLatestStories, params);
     dispatch(getLatestStorySuccess({ hits, nbPages, page }));
   } catch (err) {
-    dispatch(getLatestStoryFailure(err));
+    dispatch(getLatestStoryFailure(err.message));
   }
 };
 

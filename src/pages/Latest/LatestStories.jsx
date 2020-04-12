@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Listing from '../../components/composite/Listing/Listing';
 import Pagination from '../../components/composite/Pagination/Pagination';
 import Page from '../../components/core/Page/Page';
+import Paragraph from '../../components/core/Paragraph/Paragraph';
 
 class LatestStories extends Component {
   componentDidMount() {
@@ -22,7 +23,16 @@ class LatestStories extends Component {
   }
 
   render() {
-    const { items, loader, current, total } = this.props;
+    const { items, loader, current, total, error } = this.props;
+    if (error) {
+      return (
+        <Page title="Error 400">
+          <Paragraph type="primary" className="p1">
+            {error}
+          </Paragraph>
+        </Page>
+      );
+    }
     return (
       <Page title="Latest Stories">
         <Listing items={items} loader={loader} />
@@ -39,6 +49,11 @@ LatestStories.propTypes = {
   current: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
   match: PropTypes.object.isRequired,
+  error: PropTypes.string,
+};
+
+LatestStories.defaultProps = {
+  error: '',
 };
 
 export default LatestStories;
