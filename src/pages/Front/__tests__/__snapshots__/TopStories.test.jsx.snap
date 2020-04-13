@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopStories.jsx renders correctly 1`] = `
+<main
+  className="main"
+  id="main"
+>
+  <div
+    className="listing"
+  />
+  <div
+    className="pagination py1 pl2"
+  >
+    <a
+      className="primary-large moreBtn"
+      href="/top/1"
+      onClick={[Function]}
+      title="Page 1 of 10"
+    >
+      More
+    </a>
+  </div>
+</main>
+`;

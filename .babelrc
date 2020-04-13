@@ -1,13 +1,5 @@
 {
-  "presets": [
-    [
-      "@babel/env",
-      {
-        "modules": false
-      }
-    ],
-    "@babel/preset-react"
-  ],
+  "presets":["@babel/env", "@babel/preset-react"],
   "plugins": [
     [
       "@babel/plugin-transform-runtime",
@@ -20,7 +12,13 @@
         "version": "7.9.2"
       }
     ],
-    "@loadable/babel-plugin",
-    "react-hot-loader/babel"
-  ]
+    "@loadable/babel-plugin"
+  ],
+  "env": {
+    "development": {
+      "plugins": ["react-hot-loader/babel"]
+    },
+    "production":{},
+    "test":{}
+  }
 }
