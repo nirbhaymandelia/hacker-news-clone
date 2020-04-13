@@ -5,7 +5,7 @@ Universal boilerplate app using react and redux
 
 This is a starter boilerplate app I've put together using the following technologies:
 
-* [Universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9) rendering
+* [Universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9) rendering with code-splitting.
 * Caching - custom framework implementation to cache pre-required server side data call with option to specify caching duration in routes to boost performance.
 * [React](https://github.com/facebook/react)
 * [React Router](https://github.com/rackt/react-router)
