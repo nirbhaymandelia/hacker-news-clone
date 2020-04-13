@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { getLatestStories } from '../../services/hackerNewsAPI';
+import { getLatestStories } from '../services/hackerNewsAPI';
 
 const initialState = {
   items: [],

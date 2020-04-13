@@ -29,7 +29,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   className: 'btn',
-  variation: 'btn-primary',
+  variation: 'primary',
   onClick: () => {},
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './vote.module.css';
+import Button from '../../core/Button/Button';
 
 const getColorClass = (votes) => {
   if (votes >= 100) {
@@ -12,14 +13,18 @@ const getColorClass = (votes) => {
   return styles.low;
 };
 
-function Vote({ voteLink, votes, className }) {
+function Vote({ onVote, votes, className, isVoted }) {
   return (
     <div className={`${styles.vote} ${className}`}>
       <div className={`${getColorClass(votes)} votecount`}>{votes}</div>
       <div className="votelinks">
-        <a href={voteLink}>
-          <div className={styles.votearrow} title="upvote" />
-        </a>
+        {isVoted ? (
+          <span className={`${styles.votearrowhide}`} />
+        ) : (
+          <Button onClick={onVote} type="button">
+            <span className={styles.votearrow} title="upvote" />
+          </Button>
+        )}
       </div>
     </div>
   );
@@ -27,12 +32,14 @@ function Vote({ voteLink, votes, className }) {
 
 Vote.propTypes = {
   votes: PropTypes.number.isRequired,
-  voteLink: PropTypes.string.isRequired,
+  onVote: PropTypes.func.isRequired,
   className: PropTypes.string,
+  isVoted: PropTypes.bool,
 };
 
 Vote.defaultProps = {
   className: '',
+  isVoted: false,
 };
 
 export default Vote;

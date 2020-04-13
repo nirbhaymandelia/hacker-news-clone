@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ListItem from '../ListItem/ListItem';
+import ListItem from '../ListItem/ListItem.connect';
 import ListItemLoader from '../ListItem/ListItemLoader';
 import styles from './listing.module.css';
 
@@ -25,14 +25,13 @@ function Listing({ items, loader }) {
           <ListItem
             key={item.objectID}
             id={item.objectID}
-            rank={item.num_comments}
-            voteLink={`vote?id=${item.id}`}
+            rank={item.num_comments || 0}
             link={item.url}
             title={item.title}
             votes={item.points}
             author={item.author}
             createdAt={item.created_at}
-            commentCount={item.num_comments}
+            commentCount={item.num_comments || 0}
             className={styles.listItem}
           />
         );

@@ -8,10 +8,18 @@ import Paragraph from '../../components/core/Paragraph/Paragraph';
 
 class LatestStories extends Component {
   componentDidMount() {
-    const { match, items } = this.props;
+    const {
+      match,
+      items,
+      fetchVotedItems,
+      fetchHiddenItems,
+      fetchLatestStories,
+    } = this.props;
     if (!items.length) {
-      this.props.fetchLatestStories(match);
+      fetchLatestStories(match);
     }
+    fetchVotedItems();
+    fetchHiddenItems();
   }
 
   componentDidUpdate(prev) {
@@ -45,6 +53,8 @@ class LatestStories extends Component {
 LatestStories.propTypes = {
   items: PropTypes.array.isRequired,
   fetchLatestStories: PropTypes.func.isRequired,
+  fetchVotedItems: PropTypes.func.isRequired,
+  fetchHiddenItems: PropTypes.func.isRequired,
   loader: PropTypes.bool.isRequired,
   current: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,

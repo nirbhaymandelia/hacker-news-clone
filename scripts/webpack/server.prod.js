@@ -39,4 +39,7 @@ module.exports = merge([
   parts.cleanBuildFolder(),
   parts.bundleAnalyzer(),
   parts.loadableStats(),
+  parts.defineConstants({
+    IS_CLIENT_BUILD: false,
+  }),
 ]);

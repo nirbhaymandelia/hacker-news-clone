@@ -1,5 +1,5 @@
 import loadable from '@loadable/component';
-import { fetchTopStories } from './topStories.slice';
+import { fetchTopStories } from '../../slices/topStories.slice';
 
 const TopStoriesAsync = loadable(() =>
   import(/* webpackChunkName: "top" */ './TopStories.connect')

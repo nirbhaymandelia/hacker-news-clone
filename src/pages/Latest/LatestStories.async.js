@@ -1,5 +1,5 @@
 import loadable from '@loadable/component';
-import { fetchLatestStories } from './latestStories.slice';
+import { fetchLatestStories } from '../../slices/latestStories.slice';
 
 const LatestStoriesAsync = loadable(() =>
   import(/* webpackChunkName: "latest" */ './LatestStories.connect')

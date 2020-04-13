@@ -1,6 +1,7 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const HotModuleReplacementPlugin = require('webpack/lib/HotModuleReplacementPlugin');
+const DefinePlugin = require('webpack/lib/DefinePlugin');
 const LoadablePlugin = require('@loadable/webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const nodeExternals = require('webpack-node-externals');
@@ -108,4 +109,8 @@ exports.enableHotReload = () => ({
 
 exports.nodeExternals = (options) => ({
   externals: nodeExternals(options),
+});
+
+exports.defineConstants = (constants = {}) => ({
+  plugins: [new DefinePlugin(constants)],
 });

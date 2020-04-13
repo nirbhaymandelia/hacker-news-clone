@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
-import { fetchLatestStories } from './latestStories.slice';
+import { fetchLatestStories } from '../../slices/latestStories.slice';
+import { fetchHiddenItems } from '../../slices/hiddenItem.slice';
+import { fetchVotedItems } from '../../slices/voting.slice';
 import LatestStories from './LatestStories';
 
 const mapStateToProps = (state) => {
@@ -12,7 +14,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = { fetchLatestStories };
+const mapDispatchToProps = {
+  fetchLatestStories,
+  fetchHiddenItems,
+  fetchVotedItems,
+};
 
 const LatestStoriesConnect = connect(
   mapStateToProps,
