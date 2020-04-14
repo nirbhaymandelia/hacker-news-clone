@@ -33,13 +33,13 @@ workflows:
     check-pr:
       jobs:
         - setup
-        - lint_css
+        - lint_css:
             requires:
               - setup
-        - lint_js
+        - lint_js:
             requires:
               - setup
-        - test
+        - test:
             requires:
               - lint_css
               - lint_js
