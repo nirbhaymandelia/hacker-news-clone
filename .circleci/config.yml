@@ -11,6 +11,7 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
+          cache-key: yarn.lock
       - run:
           name: "CSS Linting"
           command: yarn lint:css
