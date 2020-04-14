@@ -17,8 +17,9 @@ jobs:
       - run:
           name: "JS Linting"
           command: yarn lint:js
-      - node/test:
-          pkg-manager: yarn
+      - run:
+          name: "Testing"
+          command: yarn test
 workflows:
     check-code:
       jobs:
