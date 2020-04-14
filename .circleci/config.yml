@@ -1,17 +1,45 @@
 version: 2.1
 orbs:
-  node: circleci/node@1.1.6
+  node: circleci/node@2.0.2
 jobs:
-  build:
+  setup:
+    description: "Install node checkout code and install dependencies"
     executor:
       name: node/default
+      tag: 12.16.1
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: yarn install
-            - run: yarn build
+      - node/install-packages:
+          pkg-manager: yarn
+  lint_css:
+    description: "Lint code for css errors"
+    steps:
+      - run:
+          name: "CSS Linting"
+          command: yarn lint:css
+  lint_js:
+    description: "Lint code for js errors"
+    steps:
+      - run:
+          name: "JS Linting"
+          command: yarn lint:js
+  test:
+    description: "run test cases"
+    steps:
+      - run: yarn test
+          name: "Testing"
+          command: yarn test
 workflows:
-    build:
+    check-pr:
       jobs:
-        - build
+        - setup
+        - lint_css
+            requires:
+              - setup
+        - lint_js
+            requires:
+              - setup
+        - test
+            requires:
+              - lint_css
+              - lint_js
