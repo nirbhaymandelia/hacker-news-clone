@@ -1,7 +1,7 @@
 # Hacker News Boilerplate App
 Universal boilerplate app using react and redux
 
-[![CircleCI](https://circleci.com/gh/nirbhaymandelia/hacker-news-clone.svg?style=svg)](https://circleci.com/gh/nirbhaymandelia/hacker-news-clone)
+[![CircleCI](https://circleci.com/gh/nirbhaymandelia/hacker-news-clone.svg?style=svg&circle-token=dbf0e4156dbfda76e91902916b628893c4c79fc9)](https://circleci.com/gh/nirbhaymandelia/hacker-news-clone)
 
 ## About
 
