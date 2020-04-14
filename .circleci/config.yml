@@ -26,8 +26,8 @@ jobs:
   test:
     description: "run test cases"
     steps:
-      - run: yarn test
-          name: "Testing Code"
+      - run:
+          name: "Testing"
           command: yarn test
 workflows:
     check-pr:
