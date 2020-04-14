@@ -9,6 +9,8 @@ describe('TopStories.jsx', () => {
     const props = {
       items: [],
       fetchTopStories: () => {},
+      fetchVotedItems: () => {},
+      fetchHiddenItems: () => {},
       loader: false,
       current: 0,
       total: 10,
