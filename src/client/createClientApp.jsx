@@ -13,7 +13,6 @@ const App = hot(SingleLayout);
 const createClientApp = (routes) => {
   loadableReady(() => {
     const preloadedState = window.__INITIAL_STATE__;
-    console.log('!!createApp loadableReady!!', preloadedState);
     const store = configureStore(preloadedState);
     hydrate(
       <Provider store={store}>

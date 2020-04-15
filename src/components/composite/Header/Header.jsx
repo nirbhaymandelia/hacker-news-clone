@@ -15,7 +15,7 @@ function Header() {
         href="/"
         aria-label="logo"
       >
-        <img src={logoSrc} alt="logo" className="color-white border" />
+        <img src={logoSrc} alt="logo" className={styles.logoImg} />
       </Link>
       {/* <b className="hnname py1 pr1">
         <Link className="logo-text" variation="primary" href="news">

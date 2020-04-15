@@ -1,4 +1,5 @@
 /* NORMALIZE */
+@import './variables.css';
 @import 'sanitize.css';
 @import './flexbox.css';
 @import './padding.css';

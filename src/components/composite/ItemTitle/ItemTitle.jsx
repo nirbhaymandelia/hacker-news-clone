@@ -5,12 +5,12 @@ import BodyCopy from '../../core/BodyCopy/BodyCopy';
 import Link from '../../core/Link/Link';
 
 function ItemTitle({ link, title, className }) {
-  let fromSite = '';
-  let site = '';
+  let siteHost = '';
+  let siteOrigin = '';
   if (link) {
     const siteUrl = new URL(link);
-    site = siteUrl.host;
-    fromSite = siteUrl.host;
+    siteHost = siteUrl.host;
+    siteOrigin = siteUrl.origin;
     return (
       <div className={`title ${styles.itemTitle} ${className}`}>
         <Link href={link} variation="primary">
@@ -18,8 +18,8 @@ function ItemTitle({ link, title, className }) {
         </Link>
         <BodyCopy type="secondary">
           {' ('}
-          <Link href={fromSite} variation="secondary-small">
-            {site}
+          <Link href={siteOrigin} variation="secondary-small">
+            {siteHost}
           </Link>
           {') '}
         </BodyCopy>

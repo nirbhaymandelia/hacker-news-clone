@@ -1,5 +1,10 @@
-@import '../../../styles/variables.css';
 
 .header {
   background-color: var(--bg-primary);
+}
+
+.logoImg {
+  border: 1px solid var(--color-white);
+  height: 20px;
+  width: 20px;
 }
