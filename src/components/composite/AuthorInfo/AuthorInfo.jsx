@@ -7,7 +7,7 @@ function AuthorInfo({ author, className }) {
   return (
     <div className={`${className}`}>
       <BodyCopy type="secondary">by </BodyCopy>
-      <Link variation="primary-small" href={`\\from?author=${author}`}>
+      <Link variation="primary-small" href={`?author=${author}`}>
         {author}
       </Link>
     </div>

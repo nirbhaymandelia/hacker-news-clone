@@ -1,7 +1,6 @@
-@import '../../../styles/variables.css';
 
 .vote {
-  width: 70px;
+  width: 75px;
   justify-content: center;
   align-items: center;
 }

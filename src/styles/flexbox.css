@@ -1,7 +1,5 @@
 /* stylelint-disable block-opening-brace-space-before */
 
-@import './variables.css';
-
 .flex { display: flex; }
 
 @media (--breakpoint-sm) {

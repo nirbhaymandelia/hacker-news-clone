@@ -37,7 +37,7 @@ module.exports = merge([
   parts.loadStyles(),
   parts.loadAssets(),
   parts.cleanBuildFolder(),
-  parts.bundleAnalyzer(),
+  // parts.bundleAnalyzer(),
   parts.loadableStats(),
   parts.defineConstants({
     IS_CLIENT_BUILD: false,
