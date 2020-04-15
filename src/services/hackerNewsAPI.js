@@ -3,8 +3,8 @@ import axios from 'axios';
 import { getStorageData, setStorageData } from './storage';
 
 const apiUrls = {
-  top: 'http://hn.algolia.com/api/v1/search',
-  latest: 'http://hn.algolia.com/api/v1/search_by_date',
+  top: 'https://hn.algolia.com/api/v1/search',
+  latest: 'https://hn.algolia.com/api/v1/search_by_date',
 };
 
 function getRequestUrl(endpoint, params) {
