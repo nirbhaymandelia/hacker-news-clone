@@ -53,19 +53,20 @@ function start(config) {
         if (isInteractive) {
           // clearConsole();
         }
-
-        console.log(chalk.white('\n\tStarting dev server...'));
-
-        openBrowser(urls.localUrlForBrowser);
         // console.log('######', path.resolve(__dirname, '../'));
         // purgeCacheOnChange(path.resolve(__dirname, '../'));
-
-        console.log(
-          chalk.blue(`
-          Running locally at ${urls.localUrlForBrowser}
-          Running on your network at ${urls.lanUrlForConfig}:${port}
-        `)
+        console.info(chalk.white('\n✅ Client-side 🔥HMR Enabled!'));
+        console.info(chalk.white('✅ Server-side 🔥HMR Enabled!'));
+        console.info(chalk.blue('\n> Starting dev server...'));
+        console.info(
+          chalk.blue(`> Running locally at ${urls.localUrlForBrowser}`)
         );
+        console.info(
+          chalk.blue(
+            `> Running on your network at ${urls.lanUrlForConfig}:${port}\n`
+          )
+        );
+        openBrowser(urls.localUrlForBrowser);
       });
     });
   });

@@ -24,7 +24,7 @@ module.exports = merge([
       filename: '[name].js',
       publicPath: '/assets/',
       libraryTarget: 'commonjs2',
-      // chunkFilename: '[name].js',
+      chunkFilename: '[name].js',
     },
     node: {
       fs: 'empty',

@@ -17,10 +17,11 @@ module.exports = merge([
     resolve: {
       modules: [srcDir, 'node_modules'],
       extensions: ['.js', '.jsx', '.css'],
+      alias: { 'react-dom': '@hot-loader/react-dom' },
     },
     entry: [
       'react-hot-loader/patch',
-      'webpack-hot-middleware/client',
+      'webpack-hot-middleware/client?noInfo=true',
       clientEntry,
     ],
     output: {

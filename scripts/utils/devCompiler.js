@@ -27,6 +27,7 @@ const devCompiler = (config, options) => {
     });
     const clientCompiler = compiler.compilers.find((c) => c.name === 'client');
     const hotMiddleware = webpackHotMiddleware(clientCompiler, {
+      log: false,
       path: '/__webpack_hmr',
       heartbeat: 3000,
     });
@@ -48,7 +49,11 @@ const devCompiler = (config, options) => {
       const messages = formatWebpackMessages(statsData);
       const isSuccessful = !messages.errors.length && !messages.warnings.length;
       if (isSuccessful) {
-        console.log(chalk.green('Compiled successfully!'));
+        console.log(
+          `\n${chalk.bgGreen.black(' DONE ')} ${chalk.green(
+            'Compiled successfully!'
+          )}`
+        );
       }
 
       // If errors exist, only show errors.

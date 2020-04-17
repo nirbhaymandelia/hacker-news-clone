@@ -95,6 +95,7 @@ exports.bundleAnalyzer = () => ({
       analyzerMode: 'static',
       openAnalyzer: false,
       generateStatsFile: false,
+      logLevel: 'error',
     }),
   ],
 });

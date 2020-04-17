@@ -1,11 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { renderRoutes } from 'react-router-config';
+import routes from '../../routes/routes';
+
 import Footer from '../composite/Footer/Footer';
 import Header from '../composite/Header/Header';
 import '../../styles/index.css';
 
-const SingleLayout = ({ routes }) => {
+const SingleLayout = () => {
   return (
     <div className="container hn-main">
       <a className="skip-link" href="#main">
@@ -18,7 +19,4 @@ const SingleLayout = ({ routes }) => {
   );
 };
 
-SingleLayout.propTypes = {
-  routes: PropTypes.array.isRequired,
-};
 export default SingleLayout;

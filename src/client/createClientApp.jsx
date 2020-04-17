@@ -10,14 +10,15 @@ import SingleLayout from '../components/layouts/Single';
 
 const App = hot(SingleLayout);
 
-const createClientApp = (routes) => {
+const createClientApp = () => {
   loadableReady(() => {
     const preloadedState = window.__INITIAL_STATE__;
+    delete window.__INITIAL_STATE__;
     const store = configureStore(preloadedState);
     hydrate(
       <Provider store={store}>
         <BrowserRouter>
-          <App routes={routes} />
+          <App />
         </BrowserRouter>
       </Provider>,
       document.getElementById('app')
