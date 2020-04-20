@@ -8,7 +8,7 @@ const {
   prepareUrls,
 } = require('react-dev-utils/WebpackDevServerUtils');
 
-// const { purgeCacheOnChange } = require('./utils/purgeCacheOnChange');
+const express = require('express');
 const devCompiler = require('./utils/devCompiler');
 const clientConfig = require('./webpack/client.dev');
 const serverConfig = require('./webpack/server.dev');
@@ -28,7 +28,6 @@ function start(config) {
   const options = {
     publicPath: clientConfig.output.publicPath,
   };
-  // const server = express();
 
   // We need to "inject" the dev middleware higher up in the stack of middlewares,
   // so applyDevMiddleware needs to happen before server.use()
@@ -37,15 +36,11 @@ function start(config) {
       if (!port) {
         return;
       }
-
+      const devServer = express();
       const urls = prepareUrls('http', HOST, port);
-      // eslint-disable-next-line global-require, import/no-unresolved
-      const app = require('../dist/server/main').default;
-      app.use(middlewares);
-      app.setup();
-      // app.use(app);
+      devServer.use(middlewares);
       // eslint-disable-next-line consistent-return
-      app.listen(port, HOST, (err) => {
+      devServer.listen(port, HOST, (err) => {
         if (err) {
           return console.log(err);
         }
@@ -53,8 +48,7 @@ function start(config) {
         if (isInteractive) {
           // clearConsole();
         }
-        // console.log('######', path.resolve(__dirname, '../'));
-        // purgeCacheOnChange(path.resolve(__dirname, '../'));
+
         console.info(chalk.white('\n✅ Client-side 🔥HMR Enabled!'));
         console.info(chalk.white('✅ Server-side 🔥HMR Enabled!'));
         console.info(chalk.blue('\n> Starting dev server...'));

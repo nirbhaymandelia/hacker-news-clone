@@ -34,7 +34,7 @@ module.exports = merge([
     whitelist: [/@babel\/runtime/],
   }),
   parts.loadScripts(),
-  parts.loadStyles(),
+  parts.loadServerStyles(),
   parts.loadAssets(),
   parts.cleanBuildFolder(),
   // parts.bundleAnalyzer(),
@@ -42,4 +42,5 @@ module.exports = merge([
   parts.defineConstants({
     IS_CLIENT_BUILD: false,
   }),
+  parts.enableHotReload(),
 ]);
