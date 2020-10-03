@@ -1,4 +1,4 @@
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const path = require('path');
 const parts = require('./webpack.parts');
 
@@ -24,14 +24,14 @@ module.exports = merge([
       filename: '[name].js',
       publicPath: '/assets/',
       libraryTarget: 'commonjs2',
-      // chunkFilename: '[name].js',
+      chunkFilename: '[name].js',
     },
     node: {
       fs: 'empty',
     },
   },
   parts.nodeExternals({
-    whitelist: [/@babel\/runtime/],
+    allowlist: [/@babel\/runtime/],
   }),
   parts.loadScripts(),
   parts.loadStyles(),

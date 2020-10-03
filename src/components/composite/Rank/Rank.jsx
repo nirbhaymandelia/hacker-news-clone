@@ -10,6 +10,14 @@ const alignClassMap = {
   justify: 'justify',
 };
 
+/**
+ * Renders a rank.
+ *
+ * Usage:
+ * ```js
+ * <Rank value={5} align="left" className="my-rank"/>
+ * ```
+ */
 function Rank({ value, align, className }) {
   return (
     <div className={`${styles.rank} ${alignClassMap[align]} ${className}`}>

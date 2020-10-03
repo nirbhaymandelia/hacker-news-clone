@@ -57,6 +57,26 @@ exports.loadStyles = ({ hmr } = false) => ({
   ],
 });
 
+exports.loadServerStyles = () => ({
+  module: {
+    rules: [
+      {
+        test: CSS_REGEX,
+        loader: 'css-loader',
+        options: {
+          modules: {
+            // This enable css modules for all files for which /\.module\.\w+$/i.test(filename) return true
+            auto: true,
+            localIdentName: CSS_MODULE_IDENT,
+          },
+          esModule: true,
+          onlyLocals: true,
+        },
+      },
+    ],
+  },
+});
+
 exports.loadScripts = () => ({
   module: {
     rules: [
@@ -95,6 +115,7 @@ exports.bundleAnalyzer = () => ({
       analyzerMode: 'static',
       openAnalyzer: false,
       generateStatsFile: false,
+      logLevel: 'error',
     }),
   ],
 });
